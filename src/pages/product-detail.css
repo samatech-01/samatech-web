@@ -10,6 +10,7 @@
 .app-header-card { background: var(--detail-card); border: 1px solid var(--detail-border); border-radius: 18px; box-shadow: 0 3px 7px #00000014; padding: 24px; }
 .app-summary { position: relative; display: flex; align-items: center; gap: 28px; min-width: 0; }
 .app-summary > .product-icon { width: 144px; height: 144px; flex-shrink: 0; border-radius: 29px; background: #0078d4; border: 1px solid #ffffff14; box-shadow: 0 5px 12px #0002; }
+.app-summary > .product-icon > img { border: 1px solid #ffffff; }
 .app-summary > .product-icon.stfnb { background: #126894; }
 .app-summary-copy { min-width: 0; flex: 1; padding-right: 64px; }
 .app-summary h1 { font-family: var(--font-heading); font-size: clamp(1.9rem, 3.1vw, 2.65rem); font-weight: 700; line-height: 1.17; letter-spacing: -.025em; overflow-wrap: anywhere; }
