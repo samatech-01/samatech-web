@@ -178,8 +178,8 @@
   .app-detail-accordion > summary svg { width: 18px; height: 18px; }
   .app-accordion-body { padding-top: 19px; }
   .app-gallery-frame { padding: 0; border: 0; background: transparent; box-shadow: none; }
-  .screenshot-track { gap: 12px; }
-  .screenshot-slide { flex-basis: 92%; height: 235px; padding: 8px; background: #292929; border: 1px solid #424242; border-radius: 14px; }
+  .screenshot-track { gap: 8px; }
+  .screenshot-slide { flex: 0 0 auto; width: auto; height: 235px; aspect-ratio: var(--screenshot-ratio); padding: 8px; background: #292929; border: 1px solid #424242; border-radius: 14px; }
   .screenshot-slide:only-child { flex-basis: 100%; }
   .gallery-controls { display: none; }
   .screenshot-expand > span { display: none; }
