@@ -1,0 +1,33 @@
+{
+  "name": "samatech-web",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "node --test tests/config.test.js",
+    "audit:render": "node scripts/audit-render.mjs",
+    "test:detail": "node scripts/test-detail-ui.mjs && node scripts/test-detail-ui.mjs --reduced-motion",
+    "test:store": "node scripts/test-store-ui.mjs && node scripts/test-store-ui.mjs --mobile",
+    "check:release": "node scripts/check-release.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "motion": "^12.23.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.9.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.0",
+    "@vitejs/plugin-react": "^5.1.0",
+    "jsdom": "^27.4.0",
+    "tailwindcss": "^4.1.0",
+    "vite": "^7.2.0"
+  }
+}

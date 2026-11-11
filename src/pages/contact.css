@@ -1,0 +1,88 @@
+/* Contact page only: reference composition, existing shell and palette preserved. */
+.contact-reference { padding-block: 29px 48px; }
+.contact-reference-breadcrumb { display: flex; align-items: center; flex-wrap: wrap; gap: 11px; font-size: .8125rem; line-height: 1.6; color: #d1d1d1; margin-bottom: 27px; }
+.contact-reference-breadcrumb a { color: #6bbcff; }
+.contact-reference-breadcrumb a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.contact-reference-breadcrumb > svg { color: #929292; }
+.contact-reference-heading { margin-bottom: 36px; }
+.contact-reference-heading > div { display: flex; align-items: center; gap: 12px; }
+.contact-reference-heading h1 { font-family: var(--font-heading); font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 800; line-height: 1.16; letter-spacing: -.035em; }
+.contact-reference-heading > p { font-family: var(--font-body); color: #b5b5b5; font-size: clamp(.9375rem, 1.35vw, 1.1rem); line-height: 1.6; margin-top: 19px; max-width: 850px; }
+.contact-mobile-back { display: none; }
+.contact-reference-grid { display: grid; grid-template-columns: minmax(0, .98fr) minmax(0, 1.06fr); gap: 26px; align-items: start; }
+.contact-channel-list { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.contact-channel-list > div { min-width: 0; }
+.contact-whatsapp-card, .contact-reference-channel, .contact-form-card { background: #292929; border: 1px solid #424242; border-radius: 17px; box-shadow: 0 3px 9px #00000010; }
+.contact-whatsapp-card { padding: 23px; background: linear-gradient(110deg, #253a31, #293b52); border-color: #445365; }
+.contact-whatsapp-summary { display: flex; align-items: center; gap: 18px; margin-bottom: 23px; }
+.contact-channel-icon { width: 64px; height: 64px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid #ffffff0b; border-radius: 16px; color: #c8c8c8; background: #363636; }
+.contact-whatsapp-summary .contact-channel-icon { width: 65px; height: 65px; color: #fff; background: #0782c1; border-color: #69a7cc33; }
+.contact-whatsapp-summary > div, .contact-reference-channel > div { min-width: 0; }
+.contact-whatsapp-summary h2, .contact-reference-channel h2 { font-family: var(--font-heading); font-size: clamp(1.15rem, 1.7vw, 1.5rem); font-weight: 700; line-height: 1.35; letter-spacing: -.025em; }
+.contact-whatsapp-summary p { font-size: .9375rem; line-height: 1.5; color: #b5c2cc; margin-top: 5px; }
+.contact-reference .contact-chat-button { width: 100%; min-height: 44px; border-radius: 7px; font-size: .875rem; gap: 8px; text-align: center; }
+.contact-channel-note { font-size: .75rem; color: #c0c9d2; line-height: 1.6; margin-top: 10px; }
+.contact-reference-channel { display: flex; align-items: center; gap: 18px; padding: 22px; min-height: 111px; }
+.contact-reference-channel p, .contact-reference-channel > div > a { font-size: .875rem; color: #b5b5b5; line-height: 1.6; margin-top: 7px; overflow-wrap: anywhere; }
+.contact-reference-channel > div > a { display: inline-block; }
+.contact-reference-channel > div > a:hover { color: #83c6ff; text-decoration: underline; text-underline-offset: 4px; }
+.contact-form-card { padding: 23px; min-width: 0; }
+.contact-message-form { display: flex; flex-direction: column; gap: 17px; min-width: 0; }
+.contact-field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.contact-field > label { font-family: var(--font-body); color: #ededed; font-size: 1rem; line-height: 1.5; font-weight: 500; }
+.contact-field > input, .contact-field > select, .contact-field > textarea { display: block; width: 100%; min-width: 0; border: 1px solid #484848; border-radius: 8px; background: #303030; color: #f5f5f5; padding: 11px 13px; font-family: var(--font-body); font-size: .9375rem; line-height: 1.5; box-shadow: inset 0 1px 2px #00000008; }
+.contact-field > input, .contact-field > select { min-height: 44px; }
+.contact-field > select { text-overflow: ellipsis; padding-right: 28px; }
+.contact-field > textarea { min-height: 123px; resize: vertical; max-width: 100%; }
+.contact-field input::placeholder, .contact-field textarea::placeholder { color: #9b9b9b; opacity: 1; }
+.contact-field input:focus, .contact-field select:focus, .contact-field textarea:focus { border-color: #1686db; }
+.contact-form-notice { color: #aaa; font-size: .6875rem; line-height: 1.6; }
+.contact-reference .contact-submit-button { width: 100%; min-height: 45px; border-radius: 8px; font-size: .875rem; }
+.contact-message-result { color: #b8d5eb; font-size: .8125rem; line-height: 1.6; overflow-wrap: anywhere; }
+.contact-message-result:empty { display: none; }
+.contact-prepared-link { font-size: .8125rem; }
+@media (hover: hover) and (pointer: fine) {
+  .contact-reference-channel:hover { border-color: #515151; }
+}
+@media (max-width: 1100px) and (min-width: 768px) {
+  .contact-reference-grid { gap: 20px; grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr); }
+  .contact-whatsapp-card, .contact-form-card { padding: 20px; }
+  .contact-reference-channel { padding: 19px; gap: 14px; }
+  .contact-channel-icon { width: 51px; height: 56px; border-radius: 13px; }
+  .contact-whatsapp-summary { gap: 14px; }
+  .contact-whatsapp-summary .contact-channel-icon { width: 54px; height: 57px; }
+  .contact-whatsapp-summary h2, .contact-reference-channel h2 { font-size: 1.15rem; }
+  .contact-whatsapp-summary p { font-size: .8125rem; }
+  .contact-reference .contact-chat-button { font-size: .8125rem; }
+}
+@media (max-width: 767px) {
+  .contact-reference { padding-block: 23px 38px; }
+  .contact-reference-breadcrumb { display: none; }
+  .contact-mobile-back { display: inline-flex; align-items: center; color: #c9c9c9; flex-shrink: 0; }
+  .contact-reference-heading { margin-bottom: 22px; }
+  .contact-reference-heading h1 { font-size: clamp(1.55rem, 6vw, 2rem); font-weight: 700; }
+  .contact-reference-heading > p { font-size: .875rem; line-height: 1.6; margin-top: 15px; }
+  .contact-reference-grid { grid-template-columns: minmax(0, 1fr); gap: 17px; }
+  .contact-channel-list { gap: 15px; }
+  .contact-whatsapp-card { padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+  .contact-whatsapp-summary { display: none; }
+  .contact-reference .contact-chat-button { min-height: 49px; font-size: .8125rem; border-radius: 9px; }
+  .contact-channel-note { font-size: .6875rem; margin-top: 9px; }
+  .contact-reference-channel { gap: 13px; min-height: 88px; padding: 17px 15px; border-radius: 15px; }
+  .contact-channel-icon { width: 46px; height: 50px; border-radius: 12px; }
+  .contact-channel-icon > svg { width: 25px; height: 25px; }
+  .contact-reference-channel h2 { font-size: 1.1rem; }
+  .contact-reference-channel p, .contact-reference-channel > div > a { font-size: .8125rem; margin-top: 5px; }
+  .contact-form-card { padding: 18px; border-radius: 15px; }
+  .contact-message-form { gap: 15px; }
+  .contact-field { gap: 7px; }
+  .contact-field > label { font-size: .9375rem; }
+  .contact-field > input, .contact-field > select, .contact-field > textarea { font-size: 1rem; padding: 10px; border-radius: 8px; }
+  .contact-field > select { padding-right: 25px; }
+  .contact-field > input, .contact-field > select { min-height: 43px; }
+  .contact-field > textarea { min-height: 128px; }
+  .contact-reference .contact-submit-button { min-height: 45px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact-reference * { transition: none !important; animation: none !important; }
+}

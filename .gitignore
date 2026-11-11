@@ -1,0 +1,49 @@
+# Dependencies and generated output
+node_modules/
+dist/
+coverage/
+*.log
+*.tsbuildinfo
+
+# Environment and credentials (including examples until explicitly reviewed)
+.env
+.env.*
+*.local
+.npmrc
+.netrc
+credentials.json
+*service-account*.json
+*service_account*.json
+keystore.properties
+local.properties
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+
+# Local tooling, audit caches and quarantined assets
+.audit-cache/
+.audit-local/
+.asset-tools/
+.private-assets/
+.codex/
+.agents/
+.aws/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Android packages, backups and data exports do not belong in the website
+*.apk
+*.aab
+*.bak
+*.backup
+*.sqlite
+*.sqlite3
+*.db
+*.zip
