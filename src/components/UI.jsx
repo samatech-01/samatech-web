@@ -10,7 +10,7 @@ export function Reveal({ children, className = '', delay = 0 }) {
   return <motion.div className={className} initial={reduced ? false : { opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: 0.08 }} transition={{ duration: reduced ? 0 : 0.24, delay: reduced ? 0 : delay, ease: [0.22, 1, 0.36, 1] }}>{children}</motion.div>;
 }
 export function Brand() {
-  return <Link className="brand" to="/" aria-label="SamaTech, Beranda"><img className="brand-logo" src="/images/samatech/logo-96.png" srcSet="/images/samatech/logo-96.png 1x, /images/samatech/logo-192.png 2x" width="36" height="36" alt="Logo SamaTech" decoding="async" /><span>Sama<span className="brand-accent">Tech</span></span></Link>;
+  return <Link className="brand" to="/" aria-label="SamaTech, Beranda"><img className="brand-logo" src="./images/samatech/logo-96.png" srcSet="./images/samatech/logo-96.png 1x, ./images/samatech/logo-192.png 2x" width="36" height="36" alt="Logo SamaTech" decoding="async" /><span>Sama<span className="brand-accent">Tech</span></span></Link>;
 }
 export function DownloadButton({ product, label = 'Download APK' }) {
   const url = getDownloadUrl(product.downloadUrl);

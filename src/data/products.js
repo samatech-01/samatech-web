@@ -1,6 +1,6 @@
 export const products = [
   {
-    id: 'stpos', name: 'stPOS', category: 'TOKO & RETAIL', icon: '/images/stpos/icon.png',
+    id: 'stpos', name: 'stPOS', category: 'TOKO & RETAIL', icon: './images/stpos/icon.png',
     developer: 'SamaTech', platform: 'Android',
     licenseDescription: 'Pembelian lisensi dilakukan satu kali untuk satu perangkat Android. Setelah pembayaran dikonfirmasi dan aktivasi berhasil, aplikasi dapat digunakan secara offline.',
     paymentType: 'Sekali bayar',
@@ -8,61 +8,61 @@ export const products = [
     version: '0.35.5', minAndroid: null, fileSize: null, updatedAt: null,
     screenshots: [
       {
-            "src": "/images/stpos/screenshot-dashboard1.jpg",
+            "src": "./images/stpos/screenshot-dashboard1.jpg",
             "alt": "stPOS - dashboard1",
             "width": 1220,
             "height": 2712
       },
       {
-            "src": "/images/stpos/screenshot-dashboard2.jpg",
+            "src": "./images/stpos/screenshot-dashboard2.jpg",
             "alt": "stPOS - dashboard2",
             "width": 1220,
             "height": 2712
       },
       {
-            "src": "/images/stpos/screenshot-dashboard3.jpg",
+            "src": "./images/stpos/screenshot-dashboard3.jpg",
             "alt": "stPOS - dashboard3",
             "width": 1220,
             "height": 2712
       },
       {
-            "src": "/images/stpos/screenshot-data-barang1.jpg",
+            "src": "./images/stpos/screenshot-data-barang1.jpg",
             "alt": "stPOS - data barang1",
             "width": 1220,
             "height": 2712
       },
       {
-            "src": "/images/stpos/screenshot-data-barang2.jpg",
+            "src": "./images/stpos/screenshot-data-barang2.jpg",
             "alt": "stPOS - data barang2",
             "width": 1220,
             "height": 2712
       },
       {
-            "src": "/images/stpos/screenshot-kasir1.jpg",
+            "src": "./images/stpos/screenshot-kasir1.jpg",
             "alt": "stPOS - kasir1",
             "width": 1220,
             "height": 2712
       },
       {
-            "src": "/images/stpos/screenshot-kasir2.jpg",
+            "src": "./images/stpos/screenshot-kasir2.jpg",
             "alt": "stPOS - kasir2",
             "width": 1220,
             "height": 2712
       },
       {
-            "src": "/images/stpos/screenshot-login-awal.jpg",
+            "src": "./images/stpos/screenshot-login-awal.jpg",
             "alt": "stPOS - login awal",
             "width": 1220,
             "height": 2712
       },
       {
-            "src": "/images/stpos/screenshot-riwayat-transaksi.jpg",
+            "src": "./images/stpos/screenshot-riwayat-transaksi.jpg",
             "alt": "stPOS - riwayat transaksi",
             "width": 1220,
             "height": 2712
       },
       {
-            "src": "/images/stpos/screenshot-akun.png",
+            "src": "./images/stpos/screenshot-akun.png",
             "alt": "stPOS - akun",
             "width": 1220,
             "height": 2712
@@ -117,7 +117,7 @@ export const products = [
     "Operasional offline: fitur utama tetap tersedia setelah aktivasi."
 ],
     featureNote: "QRIS, transfer, dan kartu merupakan pencatatan metode pembayaran; integrasi pemrosesan atau verifikasi pembayaran otomatis belum terlihat. Backup ke Google Drive dilakukan melalui pemilih file Android. Angka profit pada dashboard adalah laba kotor, belum memperhitungkan biaya operasional.",
-    screenshot: '/images/stpos/screenshot-dashboard1.jpg',
+    screenshot: './images/stpos/screenshot-dashboard1.jpg',
     screenshotIsPlaceholder: false,
     screenshotAlt: 'Dashboard stPOS',
     downloadUrl: 'https://github.com/samatech-01/samatech-app-release/releases/download/stPOSv1-0.35.5/stPOS-0.35.5-release.apk',
@@ -125,7 +125,7 @@ export const products = [
     requirements: 'Versi minimum Android dan spesifikasi perangkat akan dikonfirmasi.',
   },
   {
-    id: 'stfnb', name: 'stFNB', category: 'MAKANAN & MINUMAN', icon: '/images/stfnb/icon.png',
+    id: 'stfnb', name: 'stFNB', category: 'MAKANAN & MINUMAN', icon: './images/stfnb/icon.png',
     developer: 'SamaTech', platform: 'Android',
     licenseDescription: 'Pembelian lisensi dilakukan satu kali untuk satu perangkat Android. Setelah pembayaran dikonfirmasi dan aktivasi berhasil, aplikasi dapat digunakan secara offline.',
     paymentType: 'Sekali bayar',
@@ -133,43 +133,43 @@ export const products = [
     version: '1.0.0', minAndroid: null, fileSize: null, updatedAt: null,
     screenshots: [
       {
-            "src": "/images/stfnb/screenshot-akun.png",
+            "src": "./images/stfnb/screenshot-akun.png",
             "alt": "stFNB - akun",
             "width": 1220,
             "height": 2712
       },
       {
-            "src": "/images/stfnb/screenshot-dashboard.jpg",
+            "src": "./images/stfnb/screenshot-dashboard.jpg",
             "alt": "stFNB - dashboard",
             "width": 1220,
             "height": 2712
       },
       {
-            "src": "/images/stfnb/screenshot-kasir.jpg",
+            "src": "./images/stfnb/screenshot-kasir.jpg",
             "alt": "stFNB - kasir",
             "width": 1220,
             "height": 2712
       },
       {
-            "src": "/images/stfnb/screenshot-kasir2.jpg",
+            "src": "./images/stfnb/screenshot-kasir2.jpg",
             "alt": "stFNB - kasir2",
             "width": 1220,
             "height": 2712
       },
       {
-            "src": "/images/stfnb/screenshot-menu-form.jpg",
+            "src": "./images/stfnb/screenshot-menu-form.jpg",
             "alt": "stFNB - menu form",
             "width": 1220,
             "height": 2712
       },
       {
-            "src": "/images/stfnb/screenshot-menu.jpg",
+            "src": "./images/stfnb/screenshot-menu.jpg",
             "alt": "stFNB - menu",
             "width": 1220,
             "height": 2712
       },
       {
-            "src": "/images/stfnb/screenshot-pesanan.jpg",
+            "src": "./images/stfnb/screenshot-pesanan.jpg",
             "alt": "stFNB - pesanan",
             "width": 1220,
             "height": 2712
@@ -216,7 +216,7 @@ export const products = [
     "Profil usaha: kelola nama usaha, nama pemilik, dan email."
 ],
     featureNote: "Metode QRIS, transfer, dan kartu digunakan untuk mencatat pembayaran. Aplikasi belum memverifikasi pembayaran secara otomatis melalui bank atau penyedia pembayaran. Laba yang ditampilkan adalah laba kotor sebelum biaya operasional.",
-    screenshot: '/images/stfnb/screenshot-dashboard.jpg',
+    screenshot: './images/stfnb/screenshot-dashboard.jpg',
     screenshotIsPlaceholder: false,
     screenshotAlt: 'Dashboard stFNB',
     downloadUrl: 'https://github.com/samatech-01/samatech-app-release/releases/download/stFNBv1.1.0.0/stFNB-1.0.0-release.apk',

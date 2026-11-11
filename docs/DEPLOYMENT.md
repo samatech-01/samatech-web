@@ -11,7 +11,7 @@ Push source ke `main` hanya menjalankan validasi; tidak menerbitkan website.
 4. Setelah publikasi disetujui, buka **Actions → Validate and optionally deploy GitHub Pages → Run workflow**, pilih branch `main`, set `publish=true`, lalu jalankan. Default `publish` adalah `false`; push/PR biasa hanya menjalankan validasi.
 5. Untuk domain khusus, atur **samatech.sbs** pada **Settings → Pages**. `public/CNAME` ikut tersalin ke `dist/CNAME` sebagai dokumentasi domain. GitHub mengabaikan CNAME pada workflow Actions kustom; domain wajib diatur melalui Settings → Pages.
 
-Vite menggunakan `base: '/'` untuk root domain. HashRouter membuat tautan seperti `https://samatech.sbs/#/produk/stpos` tetap dapat dibuka dan direfresh. Jika preview memakai subpath repository tanpa custom domain, ubah `base` serta URL aset absolut secara konsisten terlebih dahulu; konfigurasi sekarang sengaja untuk custom domain root.
+Vite menggunakan `base: './'` dan URL relatif untuk aset agar satu build dapat dimuat pada root domain `https://samatech.sbs/` maupun subpath GitHub Pages `https://samatech-01.github.io/samatech-web/`. HashRouter tetap membuat tautan seperti `https://samatech.sbs/#/produk/stpos` dapat dibuka dan direfresh tanpa mengubah base aset.
 
 ## DNS manual — pertahankan Google Workspace
 

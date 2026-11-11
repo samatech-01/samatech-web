@@ -47,7 +47,7 @@ try {
     for (const [, attrs] of html.matchAll(/<img\b([^>]+)>/g)) {
       assert.match(attrs, /alt="[^"]+"/, `${route}: alt gambar`);
       const src = attrs.match(/src="([^"]+)"/)?.[1];
-      assert.ok(src?.startsWith('/') && existsSync(resolve('public', src.slice(1))), `${route}: aset ${src}`);
+      assert.ok(src?.startsWith('./') && existsSync(resolve('public', src.slice(2))), `${route}: aset ${src}`);
     }
     for (const [, href] of html.matchAll(/href="([^"]+)"/g)) {
       if (href.startsWith('/')) assert.ok((routes.includes(href) || (href.startsWith('/images/') && existsSync(resolve('public', href.slice(1))))), `${route}: tautan internal ${href}`);

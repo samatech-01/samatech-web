@@ -77,7 +77,7 @@ push, deployment, pengaturan GitHub Pages online, atau perubahan DNS.
   (info/low/moderate/high/critical seluruhnya 0), 209 dependensi menurut npm.
   Percobaan pertama dalam sandbox gagal mengakses registry; hasil di atas berasal
   dari percobaan berhasil dengan akses jaringan yang diizinkan.
-- `npm run check:release`: memeriksa CNAME source/output, base root, HashRouter,
+- `npm run check:release`: memeriksa CNAME source/output, base relatif, HashRouter,
   path aset dengan huruf besar/kecil yang tepat untuk Linux, aset produk aktif,
   berkas output, kandidat Git dan pola kredensial umum.
   Hasil akhir: 95 kandidat berkas Git dan 40 berkas output lulus; tidak ada
@@ -92,7 +92,7 @@ push, deployment, pengaturan GitHub Pages online, atau perubahan DNS.
 
 ## GitHub Pages dan domain
 
-- `vite.config.js`: `base: '/'`, sesuai root custom domain.
+- `vite.config.js`: `base: './'`, agar aset berfungsi pada root custom domain dan subpath GitHub Pages.
 - `public/CNAME`: `samatech.sbs`; tersalin ke `dist/CNAME`.
 - Routing memakai HashRouter, misalnya `https://samatech.sbs/#/produk/stpos`.
   Refresh detail tidak memerlukan server rewrite.

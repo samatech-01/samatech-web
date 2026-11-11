@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
-import { resolve, relative, sep } from 'node:path';
+import { resolve, relative, sep, posix } from 'node:path';
 import { products } from '../src/data/products.js';
 
 const walk = directory => readdirSync(directory).flatMap(name => {
@@ -12,12 +12,15 @@ const files = directory => new Set(walk(directory).map(path => relative(director
 const publicFiles = files('public');
 const outputFiles = files('dist');
 const text = path => readFileSync(path, 'utf8');
+const outputAssetPath = (from, url) => url.startsWith('/')
+  ? url.slice(1).split(/[?#]/)[0]
+  : posix.normalize(posix.join(posix.dirname(from), url.split(/[?#]/)[0]));
 const sensitivePath = /(?:^|\/)(?:\.env(?:\..*)?|\.npmrc|\.netrc|credentials\.json|keystore\.properties|local\.properties|id_rsa.*|id_ed25519.*)$|\.(?:jks|keystore|p12|pfx|pem|key|apk|aab|sqlite3?|db|backup|bak)$/i;
 const secret = /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|\b(?:gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{40,}|AKIA[A-Z0-9]{16}|AIza[A-Za-z0-9_-]{35}|sk-(?:proj-)?[A-Za-z0-9_-]{40,})\b/;
 
 assert.equal(text('public/CNAME').trim(), 'samatech.sbs');
 assert.equal(text('dist/CNAME').trim(), 'samatech.sbs');
-assert.match(text('vite.config.js'), /base:\s*['"]\/['"]/);
+assert.match(text('vite.config.js'), /base:\s*['"]\.\/['"]/);
 assert.match(text('src/main.jsx'), /<HashRouter>/);
 assert.match(text('index.html'), /rel="canonical" href="https:\/\/samatech\.sbs\/"/);
 for (const app of ['stpos', 'stfnb']) {
@@ -36,9 +39,11 @@ for (const app of ['stpos', 'stfnb']) {
 for (const path of outputFiles) {
   assert.ok(!/placeholder/i.test(path), `Unused placeholder shipped: ${path}`);
   if (/\.(?:html|css)$/.test(path)) {
-    for (const match of text(resolve('dist', path)).matchAll(/(?:src|href)=["'](\/[^"']+)["']|url\(["']?(\/[^)'"\s]+)["']?\)/g)) {
-      const asset = (match[1] || match[2]).slice(1).split(/[?#]/)[0];
-      assert.ok(outputFiles.has(asset), `${path}: missing exact-case asset ${asset}`);
+    for (const match of text(resolve('dist', path)).matchAll(/(?:src|href)=["']([^"']+)["']|url\(["']?([^)'"\s]+)["']?\)/g)) {
+      const url = match[1] || match[2];
+      if (/^(?:[a-z][a-z\d+.-]*:|\/\/|#)/i.test(url)) continue;
+      const asset = outputAssetPath(path, url);
+      assert.ok(outputFiles.has(asset), `${path}: missing exact-case asset ${url} -> ${asset}`);
     }
   }
 }
@@ -46,7 +51,8 @@ for (const product of products) {
   assert.equal(product.screenshotIsPlaceholder, false, `${product.id}: placeholder`);
   assert.ok(product.screenshots.length, `${product.id}: missing screenshots`);
   for (const image of [{ src: product.icon }, { src: product.screenshot }, ...product.screenshots]) {
-    const path = image.src.replace(/^\//, '');
+    assert.ok(image.src.startsWith('./'), `${product.id}: asset must use a deploy-relative URL`);
+    const path = image.src.slice(2);
     assert.ok(publicFiles.has(path), `${image.src}: exact-case public asset`);
     assert.ok(outputFiles.has(path), `${image.src}: exact-case built asset`);
     assert.ok(!/placeholder/i.test(path), `${image.src}: placeholder asset`);
