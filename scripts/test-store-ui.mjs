@@ -40,6 +40,9 @@ try {
   await click(navTo('/produk'));
   assert.equal(document.querySelectorAll('.product-card').length, products.length);
   assert.ok([...document.querySelectorAll('.ready-app-card')].every(card => /Rp300\.000/.test(card.textContent) && /Sekali bayar/.test(card.textContent) && /1 perangkat Android per pembelian/.test(card.textContent)));
+  assert.ok([...document.querySelectorAll('.ready-card-shell')].every(shell => !shell.hasAttribute('style')), 'Ikon katalog tampil tanpa animasi opacity awal');
+  assert.match(readFileSync('src/pages/products.css', 'utf8'), /\.ready-catalog \.ready-app-identity > \.product-icon > img \{[^}]*border:\s*1px solid #ffffff;/, 'Border ikon katalog tetap putih di CSS');
+  assert.match(readFileSync('src/styles.css', 'utf8'), /\.store-home \.product-icon > img \{[^}]*border:\s*1px solid #fff;/, 'Border ikon Beranda tetap putih di CSS');
   assert.equal(nav().querySelector('[aria-current="page"]').textContent, 'Aplikasi');
   const input = document.querySelector('.store-search input');
   const typeSearch = async value => act(async () => {

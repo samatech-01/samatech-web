@@ -105,6 +105,8 @@ main:focus { outline: none; }
 .product-category { display: block; font-size: .625rem; letter-spacing: .035em; color: #afafaf; margin-top: 5px; }
 .product-icon { display: inline-flex; align-items: center; justify-content: center; width: 66px; height: 66px; flex-shrink: 0; border: 1px solid #ffffff1a; border-radius: 15px; background: linear-gradient(140deg, #2096ee, #0768af); color: #fff; }
 .product-icon.stfnb { background: linear-gradient(140deg, #2683b7, #235270); }
+.store-home .product-icon { border: 0; background: transparent; overflow: hidden; }
+.store-home .product-icon > img { border: 1px solid #fff; object-fit: cover; }
 .product-card > p { font-size: .875rem; margin-top: 19px; }
 .product-license-status { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-size: .6875rem; color: #b3b3b3; margin-block: 18px 23px; }
 .product-license-status > span:first-child { padding: 4px 7px; background: #303030; border: 1px solid #414141; border-radius: 4px; }
