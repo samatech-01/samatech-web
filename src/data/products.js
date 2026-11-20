@@ -121,7 +121,7 @@ export const products = [
     screenshotIsPlaceholder: false,
     screenshotAlt: 'Dashboard stPOS',
     downloadUrl: 'https://github.com/samatech-01/samatech-app-release/releases/download/stPOSv1-0.35.5/stPOS-0.35.5-release.apk',
-    price: 'Rp300.000', priceNote: null,
+    price: 'Rp99.000', priceNote: null,
     requirements: 'Versi minimum Android dan spesifikasi perangkat akan dikonfirmasi.',
   },
   {
@@ -220,7 +220,7 @@ export const products = [
     screenshotIsPlaceholder: false,
     screenshotAlt: 'Dashboard stFNB',
     downloadUrl: 'https://github.com/samatech-01/samatech-app-release/releases/download/stFNBv1.1.0.0/stFNB-1.0.0-release.apk',
-    price: 'Rp300.000', priceNote: null,
+    price: 'Rp99.000', priceNote: null,
     requirements: 'Versi minimum Android dan spesifikasi perangkat akan dikonfirmasi.',
   },
 ];
