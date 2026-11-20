@@ -66,7 +66,7 @@ try {
   assert.match(document.querySelector('.gallery-empty').textContent, /belum tersedia/);
   assert.deepEqual(getTechnicalInfo(products[0]).filter(([label]) => ['Versi', 'Ukuran APK', 'Diperbarui'].includes(label)), [['Versi', '0.35.5']]);
   assert.deepEqual(getTechnicalInfo(products[1]).filter(([label]) => ['Versi', 'Ukuran APK', 'Diperbarui'].includes(label)), [['Versi', '1.0.0']]);
-  assert.equal(getLicensePrice(products[0]), 'Rp300.000');
+  assert.equal(getLicensePrice(products[0]), products[0].licensePrice ?? products[0].price);
   assert.equal(products[0].paymentType, 'Sekali bayar');
   assert.equal(products[0].licenseScope, '1 perangkat Android per pembelian');
   assert.equal(getLicensePrice({ price: 'Harga lama' }), 'Harga lama');

@@ -4,6 +4,7 @@ import { JSDOM } from 'jsdom';
 import { createServer } from 'vite';
 import { filterProducts, getProductCategories } from '../src/data/catalogSearch.js';
 import { products } from '../src/data/products.js';
+import { getLicensePrice } from '../src/data/productPresentation.js';
 import { services, serviceFaqs, serviceOrderSteps } from '../src/data/services.js';
 import { getServiceWhatsAppUrl } from '../src/data/serviceContact.js';
 import { contactTopics, getContactMessageUrl, getContactEmailUrl } from '../src/data/contact.js';
@@ -39,7 +40,12 @@ try {
   assert.match(document.querySelector('h1').textContent, /Solusi Aplikasi/);
   await click(navTo('/produk'));
   assert.equal(document.querySelectorAll('.product-card').length, products.length);
-  assert.ok([...document.querySelectorAll('.ready-app-card')].every(card => /Rp300\.000/.test(card.textContent) && /Sekali bayar/.test(card.textContent) && /1 perangkat Android per pembelian/.test(card.textContent)));
+  for (const product of products) {
+    const card = document.querySelector(`.ready-app-card a[href="/produk/${product.id}"]`)?.closest('.ready-app-card');
+    assert.ok(card, `Kartu katalog tersedia untuk ${product.id}`);
+    assert.equal(card.querySelector('.ready-app-license strong')?.textContent, getLicensePrice(product), `Harga katalog sesuai konfigurasi ${product.id}`);
+    assert.match(card.textContent, /Sekali bayar.*1 perangkat Android per pembelian/);
+  }
   assert.ok([...document.querySelectorAll('.ready-card-shell')].every(shell => !shell.hasAttribute('style')), 'Ikon katalog tampil tanpa animasi opacity awal');
   assert.match(readFileSync('src/pages/products.css', 'utf8'), /\.ready-catalog \.ready-app-identity > \.product-icon > img \{[^}]*border:\s*1px solid #ffffff;/, 'Border ikon katalog tetap putih di CSS');
   assert.match(readFileSync('src/styles.css', 'utf8'), /\.store-home \.product-icon > img \{[^}]*border:\s*1px solid #fff;/, 'Border ikon Beranda tetap putih di CSS');
@@ -85,8 +91,13 @@ try {
   assert.equal(document.activeElement.id, 'main-content');
   assert.equal(document.querySelector('.app-download-bar a').href, products[0].downloadUrl);
   assert.equal(document.querySelector('.app-download-bar').getAttribute('aria-label'), 'Download stPOS');
-  assert.match(document.querySelector('.app-download-bar').textContent, /Rp300\.000/);
-  assert.match(document.querySelector('.app-header-pricing').textContent, /Rp300\.000.*Sekali bayar.*1 perangkat Android per pembelian/);
+  const stposPrice = getLicensePrice(products[0]);
+  assert.ok(document.querySelector('.app-download-bar').textContent.includes(stposPrice));
+  const headerPricing = document.querySelector('.app-header-pricing').textContent;
+  assert.ok(headerPricing.includes(stposPrice));
+  assert.ok(headerPricing.includes(products[0].paymentType));
+  assert.ok(headerPricing.includes(products[0].licenseScope));
+  assert.equal(document.querySelector('.app-license-price').textContent, stposPrice);
   assert.match(document.querySelector('.app-license-description').textContent, /Pembelian lisensi dilakukan satu kali untuk satu perangkat Android\. Setelah pembayaran dikonfirmasi dan aktivasi berhasil, aplikasi dapat digunakan secara offline\./);
   assert.equal(document.querySelectorAll('.app-header-card .app-header-actions > *').length, 2);
   assert.deepEqual([...document.querySelectorAll('.app-reference-card summary h2')].map(item => item.textContent), ['Spesifikasi Teknis', 'Fitur Aplikasi', 'Ketentuan Lisensi', 'Cara Aktivasi']);

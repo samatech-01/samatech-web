@@ -11,6 +11,7 @@ const server = await createServer({ server: { middlewareMode: true }, appType: '
 try {
   const { default: App } = await server.ssrLoadModule('/src/App.jsx');
   const { products } = await server.ssrLoadModule('/src/data/products.js');
+  const { getLicensePrice } = await server.ssrLoadModule('/src/data/productPresentation.js');
   const { services } = await server.ssrLoadModule('/src/data/services.js');
   const routes = ['/', '/produk', '/aktivasi', '/faq', '/kontak', '/jasa-custom', ...products.map(p => `/produk/${p.id}`), ...services.map(service => `/jasa-custom/${service.slug}`)];
   const render = path => renderToString(React.createElement(MemoryRouter, { initialEntries: [path] }, React.createElement(App)));
@@ -27,7 +28,9 @@ try {
       assert.ok(html.includes(`href="${currentProduct.downloadUrl}" target="_blank" rel="noopener noreferrer"`), `${route}: tautan APK resmi`);
       assert.match(html, /aria-label="Breadcrumb"/);
       assert.match(html, /class="app-acquisition"/);
-      assert.match(html, /Rp300\.000/);
+      const expectedPrice = getLicensePrice(currentProduct);
+      assert.ok(html.includes(`<div class="app-header-pricing"><strong>${expectedPrice}</strong>`), `${route}: harga utama dari katalog`);
+      assert.ok(html.includes(`<strong class="app-license-price">${expectedPrice}</strong>`), `${route}: harga lisensi dari katalog`);
       assert.match(html, /Sekali bayar/);
       assert.match(html, /1 perangkat Android per pembelian/);
       assert.match(html, /Pembelian lisensi dilakukan satu kali untuk satu perangkat Android\./);
@@ -38,10 +41,14 @@ try {
         if (currentProduct[key]) assert.match(html, pattern);
         else assert.doesNotMatch(html, pattern);
       }
-      if (route === '/produk') {
-        for (const product of products) {
-          assert.ok(html.includes(`href="${product.downloadUrl}" target="_blank" rel="noopener noreferrer"`), `/produk: tautan APK ${product.id}`);
-        }
+    }
+    if (route === '/produk') {
+      const cards = [...html.matchAll(/<article class="product-card ready-app-card">([\s\S]*?)<\/article>/g)];
+      for (const product of products) {
+        const card = cards.find(([, markup]) => markup.includes(`href="/produk/${product.id}"`));
+        assert.ok(card, `/produk: kartu ${product.id}`);
+        assert.ok(card[1].includes(`<strong>${getLicensePrice(product)}</strong>`), `/produk: harga ${product.id} dari katalog`);
+        assert.ok(card[1].includes(`href="${product.downloadUrl}" target="_blank" rel="noopener noreferrer"`), `/produk: tautan APK ${product.id}`);
       }
     }
     for (const [, attrs] of html.matchAll(/<img\b([^>]+)>/g)) {
