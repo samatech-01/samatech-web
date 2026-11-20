@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { products, getDownloadUrl } from '../src/data/products.js';
+import { getLicensePrice } from '../src/data/productPresentation.js';
 import { getWhatsAppUrl, site } from '../src/config/site.js';
 import { getContactEmailUrl } from '../src/data/contact.js';
 
@@ -37,8 +38,11 @@ test('Katalog memiliki ID unik, konfigurasi valid, dan aset berteks alternatif',
   assert.equal(products.find(product => product.id === 'stfnb').version, '1.0.0');
   for (const product of products) {
     assert.match(product.id, /^[a-z0-9]+(?:-[a-z0-9]+)*$/);
-    assert.ok(typeof product.price === 'string' && product.price.trim().length > 0);
-    assert.equal(product.price, 'Rp300.000');
+    assert.match(product.price, /^Rp\d{1,3}(?:\.\d{3})*$/);
+    if (product.licensePrice != null) {
+      assert.match(product.licensePrice, /^Rp\d{1,3}(?:\.\d{3})*$/);
+    }
+    assert.equal(getLicensePrice(product), product.licensePrice ?? product.price);
     assert.equal(product.paymentType, 'Sekali bayar');
     assert.equal(product.licenseScope, '1 perangkat Android per pembelian');
     assert.equal(typeof product.downloadUrl, 'string');
