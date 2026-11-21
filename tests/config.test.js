@@ -19,10 +19,13 @@ test('APK hanya menerima aset APK langsung dari GitHub Releases HTTPS', () => {
   ]) assert.equal(getDownloadUrl(value), null);
   const stposAsset = 'https://github.com/samatech-01/samatech-app-release/releases/download/stPOSv1-0.35.5/stPOS-0.35.5-release.apk';
   const stfnbAsset = 'https://github.com/samatech-01/samatech-app-release/releases/download/stFNBv1.1.0.0/stFNB-1.0.0-release.apk';
+  const stlaundryAsset = 'https://github.com/samatech-01/samatech-app-release/releases/download/stLaundryV1.1.0.0/stLaundry-1.0.0-release.apk';
   assert.equal(getDownloadUrl(stposAsset), stposAsset);
   assert.equal(getDownloadUrl(stfnbAsset), stfnbAsset);
+  assert.equal(getDownloadUrl(stlaundryAsset), stlaundryAsset);
   assert.equal(products.find(product => product.id === 'stpos').downloadUrl, stposAsset);
   assert.equal(products.find(product => product.id === 'stfnb').downloadUrl, stfnbAsset);
+  assert.equal(products.find(product => product.id === 'stlaundry').downloadUrl, stlaundryAsset);
 });
 test('Kontak resmi membentuk tautan telepon, WhatsApp, dan email yang benar', () => {
   assert.equal(site.phoneNumber, '+6281345458212');
@@ -36,9 +39,18 @@ test('Katalog memiliki ID unik, konfigurasi valid, dan aset berteks alternatif',
   assert.equal(new Set(products.map(p => p.id)).size, products.length);
   assert.equal(products.find(product => product.id === 'stpos').version, '0.35.5');
   assert.equal(products.find(product => product.id === 'stfnb').version, '1.0.0');
+  const stlaundry = products.find(product => product.id === 'stlaundry');
+  assert.equal(stlaundry.version, '1.0.0');
+  assert.equal(stlaundry.icon, './images/stlaundry/icon-transparant.webp');
+  assert.equal(stlaundry.screenshots.length, 6);
+  assert.equal(stlaundry.price, 'Rp99.000');
+  assert.equal(stlaundry.paymentType, 'Sekali bayar');
+  assert.equal(stlaundry.licenseScope, '1 perangkat Android per pembelian');
+  assert.equal(stlaundry.licenseDescription, products[0].licenseDescription);
+  assert.match(stlaundry.featureNote, /offline-first/i);
   for (const product of products) {
     assert.match(product.id, /^[a-z0-9]+(?:-[a-z0-9]+)*$/);
-    assert.match(product.price, /^Rp\d{1,3}(?:\.\d{3})*$/);
+    if (product.price != null) assert.match(product.price, /^Rp\d{1,3}(?:\.\d{3})*$/);
     if (product.licensePrice != null) {
       assert.match(product.licensePrice, /^Rp\d{1,3}(?:\.\d{3})*$/);
     }

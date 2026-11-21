@@ -43,12 +43,14 @@ try {
   for (const product of products) {
     const card = document.querySelector(`.ready-app-card a[href="/produk/${product.id}"]`)?.closest('.ready-app-card');
     assert.ok(card, `Kartu katalog tersedia untuk ${product.id}`);
-    assert.equal(card.querySelector('.ready-app-license strong')?.textContent, getLicensePrice(product), `Harga katalog sesuai konfigurasi ${product.id}`);
-    assert.match(card.textContent, /Sekali bayar.*1 perangkat Android per pembelian/);
+    assert.equal(card.querySelector('.ready-app-license strong')?.textContent ?? null, getLicensePrice(product), `Harga katalog sesuai konfigurasi ${product.id}`);
+    assert.ok(card.querySelector('.ready-app-license').textContent.includes(`${product.paymentType} · ${product.licenseScope}`));
   }
   assert.ok([...document.querySelectorAll('.ready-card-shell')].every(shell => !shell.hasAttribute('style')), 'Ikon katalog tampil tanpa animasi opacity awal');
   assert.match(readFileSync('src/pages/products.css', 'utf8'), /\.ready-catalog \.ready-app-identity > \.product-icon > img \{[^}]*border:\s*1px solid #ffffff;/, 'Border ikon katalog tetap putih di CSS');
   assert.match(readFileSync('src/styles.css', 'utf8'), /\.store-home \.product-icon > img \{[^}]*border:\s*1px solid #fff;/, 'Border ikon Beranda tetap putih di CSS');
+  assert.match(readFileSync('src/styles.css', 'utf8'), /\.product-icon\.stlaundry \{[^}]*border:\s*1px solid #fff;/, 'Icon stLaundry memiliki garis putih penuh');
+  assert.match(readFileSync('src/styles.css', 'utf8'), /\.product-icon\.stlaundry > img \{[^}]*transform:\s*scale\(1\.65\)/, 'Icon stLaundry diperbesar untuk memenuhi bingkai');
   assert.equal(nav().querySelector('[aria-current="page"]').textContent, 'Aplikasi');
   const input = document.querySelector('.store-search input');
   const typeSearch = async value => act(async () => {

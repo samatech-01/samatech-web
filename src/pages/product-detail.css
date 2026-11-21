@@ -12,6 +12,8 @@
 .app-summary > .product-icon { width: 144px; height: 144px; flex-shrink: 0; border-radius: 29px; background: #0078d4; border: 1px solid #ffffff14; box-shadow: 0 5px 12px #0002; }
 .app-summary > .product-icon > img { border: 1px solid #ffffff; }
 .app-summary > .product-icon.stfnb { background: #126894; }
+.app-summary > .product-icon.stlaundry { border: 1px solid #ffffff; background: transparent; overflow: hidden; }
+.app-summary > .product-icon.stlaundry > img { border: 0; object-fit: cover; transform: scale(1.65); }
 .app-summary-copy { min-width: 0; flex: 1; padding-right: 64px; }
 .app-summary h1 { font-family: var(--font-heading); font-size: clamp(1.9rem, 3.1vw, 2.65rem); font-weight: 700; line-height: 1.17; letter-spacing: -.025em; overflow-wrap: anywhere; }
 .app-developer { font-size: .875rem; margin-top: 7px; }
@@ -152,6 +154,7 @@
   .app-header-card { padding: 17px; border-radius: 16px; }
   .app-summary { gap: 0; display: grid; grid-template-columns: 82px minmax(0, 1fr); column-gap: 16px; align-items: start; }
   .app-summary > .product-icon { width: 82px; height: 90px; padding: 0; overflow: hidden; border: 0; border-radius: 20px; background: transparent; }
+  .app-summary > .product-icon.stlaundry { border: 1px solid #ffffff; }
   .app-summary > .product-icon.stfnb { background: transparent; }
   .app-summary > .product-icon > img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
   .app-summary > .product-icon svg { width: 42px; height: 42px; }

@@ -105,6 +105,8 @@ main:focus { outline: none; }
 .product-category { display: block; font-size: .625rem; letter-spacing: .035em; color: #afafaf; margin-top: 5px; }
 .product-icon { display: inline-flex; align-items: center; justify-content: center; width: 66px; height: 66px; flex-shrink: 0; border: 1px solid #ffffff1a; border-radius: 15px; background: linear-gradient(140deg, #2096ee, #0768af); color: #fff; }
 .product-icon.stfnb { background: linear-gradient(140deg, #2683b7, #235270); }
+.product-icon.stlaundry { border: 1px solid #fff; background: transparent; overflow: hidden; }
+.product-icon.stlaundry > img { object-fit: cover; border: 0; transform: scale(1.65); }
 .store-home .product-icon { border: 0; background: transparent; overflow: hidden; }
 .store-home .product-icon > img { border: 1px solid #fff; object-fit: cover; }
 .product-card > p { font-size: .875rem; margin-top: 19px; }

@@ -31,6 +31,6 @@ export default function ProductDetail() {
         </aside>
       </div>
     </div>
-    <div className="app-download-bar" aria-label={`Download ${product.name}`}><div><strong>{product.name}</strong><span>{price || 'Aktivasi Berbayar'}{price ? ` · ${product.paymentType}` : ''}</span></div><DownloadButton product={product} /></div>
+    <div className="app-download-bar" aria-label={`Download ${product.name}`}><div><strong>{product.name}</strong><span>{price || 'Harga belum diumumkan'}{price ? ` · ${product.paymentType}` : ''}</span></div><DownloadButton product={product} /></div>
   </div>;
 }

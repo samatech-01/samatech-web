@@ -1,6 +1,7 @@
 const PRODUCT_PRICES = {
   stpos: 'Rp99.000',
   stfnb: 'Rp99.000',
+  stlaundry: 'Rp99.000',
 };
 
 export const products = [
@@ -227,6 +228,73 @@ export const products = [
     downloadUrl: 'https://github.com/samatech-01/samatech-app-release/releases/download/stFNBv1.1.0.0/stFNB-1.0.0-release.apk',
     price: PRODUCT_PRICES.stfnb, priceNote: null,
     requirements: 'Versi minimum Android dan spesifikasi perangkat akan dikonfirmasi.',
+  },
+  {
+    id: 'stlaundry', name: 'stLaundry', category: 'LAUNDRY', icon: './images/stlaundry/icon-transparant.webp',
+    developer: 'SamaTech', platform: 'Android',
+    licenseDescription: 'Pembelian lisensi dilakukan satu kali untuk satu perangkat Android. Setelah pembayaran dikonfirmasi dan aktivasi berhasil, aplikasi dapat digunakan secara offline.',
+    paymentType: 'Sekali bayar',
+    licenseScope: '1 perangkat Android per pembelian',
+    version: '1.0.0', minAndroid: null, fileSize: null, updatedAt: null,
+    screenshots: [
+      {
+        src: './images/stlaundry/dashboard.jpg',
+        alt: 'stLaundry - dashboard',
+        width: 1220,
+        height: 2712
+      },
+      {
+        src: './images/stlaundry/jenis-jasa.jpg',
+        alt: 'stLaundry - jenis jasa',
+        width: 1220,
+        height: 2712
+      },
+      {
+        src: './images/stlaundry/kasir.jpg',
+        alt: 'stLaundry - kasir',
+        width: 1220,
+        height: 2712
+      },
+      {
+        src: './images/stlaundry/login.jpg',
+        alt: 'stLaundry - login',
+        width: 1220,
+        height: 2712
+      },
+      {
+        src: './images/stlaundry/setting.jpg',
+        alt: 'stLaundry - pengaturan',
+        width: 1220,
+        height: 2712
+      },
+      {
+        src: './images/stlaundry/transaksi.jpg',
+        alt: 'stLaundry - transaksi',
+        width: 1220,
+        height: 2712
+      }
+    ],
+    changelog: [], licensePrice: null,
+    tagline: 'Operasional laundry yang tetap berjalan tanpa internet.',
+    description: 'Solusi POS dan manajemen operasional laundry berbasis Android dengan sistem offline-first yang andal tanpa ketergantungan internet.',
+    audience: 'Usaha laundry yang membutuhkan kasir dan pengelolaan pesanan dalam satu aplikasi.',
+    aboutTitle: 'stLaundry — POS & Manajemen Operasional Laundry',
+    aboutParagraphs: [
+      'stLaundry adalah solusi POS dan manajemen operasional laundry berbasis Android dengan sistem offline-first yang andal tanpa ketergantungan internet.'
+    ],
+    features: [
+      'Kasir cepat dan POS: perhitungan otomatis untuk layanan kiloan, satuan, dan self-service.',
+      'Manajemen pesanan: lacak status Diterima, Proses, Siap, dan Selesai, serta riwayat pembayaran cicilan atau DP.',
+      'Katalog fleksibel: atur tarif dan paket layanan sesuai kebutuhan usaha.',
+      'Cetak nota dan laporan PDF: integrasi printer thermal Bluetooth serta ekspor laporan penjualan PDF profesional.',
+      'Keamanan berbasis peran: pisahkan hak akses Pemilik (Owner) dan Karyawan (Employee).'
+    ],
+    featureNote: 'Keunggulan stLaundry: 100% offline-first agar operasional tetap berjalan saat internet terganggu; antarmuka modern dan responsif dengan Material 3 dan Jetpack Compose; serta aplikasi yang ringan dan bebas lag.',
+    screenshot: './images/stlaundry/dashboard.jpg',
+    screenshotIsPlaceholder: false,
+    screenshotAlt: 'Dashboard stLaundry',
+    downloadUrl: 'https://github.com/samatech-01/samatech-app-release/releases/download/stLaundryV1.1.0.0/stLaundry-1.0.0-release.apk',
+    price: PRODUCT_PRICES.stlaundry, priceNote: null,
   },
 ];
 
